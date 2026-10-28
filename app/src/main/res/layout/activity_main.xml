@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F3F7FB"
+    android:fillViewport="true"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="18dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_header"
+            android:padding="22dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="IA EN EL DISPOSITIVO · DEMO"
+                android:textColor="#B8F7E9"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Clasificador Iris"
+                android:textColor="#FFFFFF"
+                android:textSize="27sp"
+                android:textStyle="bold"
+                android:layout_marginTop="6dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="MLP (4 → 16 → 8 → 3) · ONNX Runtime Android"
+                android:textColor="#D1E9EA"
+                android:textSize="13sp"
+                android:layout_marginTop="7dp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/statusText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="Cargando modelo…"
+            android:textColor="#35546A"
+            android:textSize="13sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/bg_card"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Medidas de la flor"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#16374A"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Introduce las cuatro medidas en centímetros."
+                android:textSize="13sp"
+                android:textColor="#6C8291" />
+
+            <TextView style="@style/FieldLabel" android:text="Largo del sépalo (cm)" />
+            <EditText style="@style/IrisInput" android:id="@+id/sepalLength"
+                android:text="5.1" android:hint="Ej. 5.1" />
+            <TextView style="@style/FieldLabel" android:text="Ancho del sépalo (cm)" />
+            <EditText style="@style/IrisInput" android:id="@+id/sepalWidth"
+                android:text="3.5" android:hint="Ej. 3.5" />
+            <TextView style="@style/FieldLabel" android:text="Largo del pétalo (cm)" />
+            <EditText style="@style/IrisInput" android:id="@+id/petalLength"
+                android:text="1.4" android:hint="Ej. 1.4" />
+            <TextView style="@style/FieldLabel" android:text="Ancho del pétalo (cm)" />
+            <EditText style="@style/IrisInput" android:id="@+id/petalWidth"
+                android:text="0.2" android:hint="Ej. 0.2" />
+
+            <Button
+                android:id="@+id/predictButton"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="#087D78"
+                android:text="CLASIFICAR FLOR"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/resultCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/bg_card"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:visibility="gone">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Predicción de la MLP"
+                android:textColor="#5F7887"
+                android:textSize="13sp" />
+            <TextView
+                android:id="@+id/classResult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="Setosa"
+                android:textColor="#087D78"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/elapsedText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="0.00 ms"
+                android:textColor="#5F7887"
+                android:textSize="12sp" />
+
+            <LinearLayout style="@style/ProbRow" android:layout_marginTop="20dp">
+                <TextView style="@style/ProbTitle" android:text="Setosa" />
+                <TextView style="@style/ProbValue" android:id="@+id/pctSetosa" android:text="0.0 %" />
+            </LinearLayout>
+            <ProgressBar style="@style/ProbBar" android:id="@+id/barSetosa"/>
+
+            <LinearLayout style="@style/ProbRow" android:layout_marginTop="13dp">
+                <TextView style="@style/ProbTitle" android:text="Versicolor" />
+                <TextView style="@style/ProbValue" android:id="@+id/pctVersicolor" android:text="0.0 %" />
+            </LinearLayout>
+            <ProgressBar style="@style/ProbBar" android:id="@+id/barVersicolor"/>
+
+            <LinearLayout style="@style/ProbRow" android:layout_marginTop="13dp">
+                <TextView style="@style/ProbTitle" android:text="Virginica" />
+                <TextView style="@style/ProbValue" android:id="@+id/pctVirginica" android:text="0.0 %" />
+            </LinearLayout>
+            <ProgressBar style="@style/ProbBar" android:id="@+id/barVirginica"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="Las probabilidades son estimaciones del modelo, no certezas."
+                android:textColor="#6C8291"
+                android:textSize="11sp" />
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="Python → ONNX → Kotlin → APK · Offline"
+            android:textColor="#7C91A0"
+            android:textSize="12sp" />
+    </LinearLayout>
+</ScrollView>

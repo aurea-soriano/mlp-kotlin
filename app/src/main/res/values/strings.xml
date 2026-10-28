@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Iris · MLP ONNX</string>
+    <string name="loading_model">Cargando modelo ONNX…</string>
+    <string name="model_ready">✓ Modelo ONNX listo para predecir.</string>
+    <string name="invalid_input">Introduce cuatro medidas positivas y menores que 100 cm.</string>
+    <string name="running">Calculando predicción…</string>
+    <string name="local_inference">✓ Predicción realizada localmente, sin Internet.</string>
+</resources>

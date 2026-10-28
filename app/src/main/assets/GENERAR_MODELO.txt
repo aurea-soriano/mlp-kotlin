@@ -1,0 +1,10 @@
+El modelo ONNX no está preentrenado en este ZIP.
+
+Desde la carpeta raíz del proyecto:
+    python -m pip install -r requirements.txt
+    python train.py
+
+Esto genera EXCLUSIVAMENTE:
+    app/src/main/assets/model.onnx
+
+Después abre el proyecto en Android Studio y compila el APK.
